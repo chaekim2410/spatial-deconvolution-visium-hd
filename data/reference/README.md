@@ -1,0 +1,5 @@
+# Digitized snRNA-seq composition reference
+
+`digitized_snrna_composition_reference.csv` contains the approximate nine-cell-type composition used for the Jensen–Shannon divergence comparison. The underlying single-cell/single-nucleus source is GEO [GSE192740](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE192740) from Guilliams et al., [“Spatial proteogenomics reveals distinct and evolutionarily conserved hepatic macrophage niches”](https://doi.org/10.1016/j.cell.2021.12.018), *Cell* (2022). The group project extracted the comparison values with WebPlotDigitizer from a Spotless benchmark bar plot.
+
+This CSV is an aggregate **evaluation vector**. It is not the cell-by-gene/nucleus-by-gene reference object used to run NNLS, RCTD, or cell2location, not a direct raw-data calculation, and not spatial-bin-level ground truth. The processed method input was `liver_mouseStSt_nuclei_9celltypes_annot_cd45.rds`, which is not included. See `data/README.md` for source lineage and normalization details.

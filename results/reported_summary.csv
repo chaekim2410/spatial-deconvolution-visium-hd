@@ -1,0 +1,4 @@
+method,evaluated_spots,dominant_matches,dominant_mismatches,agreement,source_scope
+NNLS,1293,1293,0,1.0,paper reported full tissue versus all four splits
+RCTD,1293,1292,1,0.9992266048,paper reported full tissue versus all four splits
+cell2location,324,310,14,0.9567901235,paper reported full tissue versus split part 0

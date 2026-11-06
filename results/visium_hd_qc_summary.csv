@@ -1,0 +1,6 @@
+metric,count,total_spots,percent,threshold,source
+spots_below_gene_threshold,,115975,0.81,500 detected genes,project paper
+spots_below_umi_threshold,460,115975,0.40,500 UMIs,project paper
+rctd_rejected_spots,192,115975,0.17,100 UMIs,project paper
+nnls_rejected_spots,0,115975,0.00,,project paper
+cell2location_rejected_spots,0,115975,0.00,,project paper

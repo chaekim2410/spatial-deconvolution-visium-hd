@@ -1,0 +1,37 @@
+#!/bin/bash -l
+#PBS -N spatial_deconvolution
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l mem=48gb
+#PBS -l walltime=07:30:00
+#PBS -o spatial_deconvolution.out
+#PBS -e spatial_deconvolution.err
+
+# Submit with qsub -v PIPELINE_ROOT=...,SP_DATA_DIR=...,SC_DATA_FILE=...,METHOD=...
+# METHOD must be one of: nnls, rctd, cell2location.
+set -euo pipefail
+
+: "${PIPELINE_ROOT:?Set PIPELINE_ROOT to a compatible Spotless checkout}"
+: "${SP_DATA_DIR:?Set SP_DATA_DIR to the directory containing split spatial .rds inputs}"
+: "${SC_DATA_FILE:?Set SC_DATA_FILE to the annotated single-cell/nucleus .rds reference}"
+: "${METHOD:?Set METHOD to nnls, rctd, or cell2location}"
+
+case "$METHOD" in
+  nnls|rctd|cell2location) ;;
+  *) echo "METHOD must be nnls, rctd, or cell2location" >&2; exit 2 ;;
+esac
+
+module load Nextflow
+export NXF_APPTAINER_CACHEDIR="${VSC_SCRATCH:-$PWD}/apptainer_cache"
+export APPTAINER_TMPDIR="${VSC_SCRATCH:-$PWD}"
+mkdir -p "$NXF_APPTAINER_CACHEDIR"
+
+for sp_file in "$SP_DATA_DIR"/*part_*.rds; do
+  [ -e "$sp_file" ] || { echo "No split .rds files found in $SP_DATA_DIR" >&2; exit 1; }
+  nextflow run "$PIPELINE_ROOT/main.nf" -profile hpc \
+    --methods "$METHOD" \
+    --sc_input "$SC_DATA_FILE" \
+    --sp_input "$sp_file" \
+    --annot annot_cd45 \
+    --skip_metrics \
+    -resume
+done

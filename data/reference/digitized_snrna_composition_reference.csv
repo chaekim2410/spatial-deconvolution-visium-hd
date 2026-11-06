@@ -1,0 +1,10 @@
+cell_type,original_proportion,normalized_within_nine_types
+Hepatocytes,0.702,0.805970
+CentralVeinEndothelialcells,0.008,0.009185
+LSECs,0.011,0.012629
+PortalVeinEndothelialcells,0.074,0.084960
+Mesothelialcells,0.005,0.005741
+Kupffercells,0.033,0.037888
+Bcells,0.014,0.016073
+Cholangiocytes,0.013,0.014925
+Tcells,0.011,0.012629

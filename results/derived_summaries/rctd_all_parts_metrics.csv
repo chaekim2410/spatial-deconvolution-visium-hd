@@ -1,0 +1,2 @@
+method,parts,evaluated_spots,dominant_matches,dominant_mismatches,dominant_agreement,mean_absolute_error,median_absolute_error,flattened_pearson_correlation
+RCTD,"0,1,2,3",1293,1292,1,0.9992266047950503,0.013669583733060181,0.007344045791155901,0.9991740618225348

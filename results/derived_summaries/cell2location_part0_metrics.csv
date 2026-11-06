@@ -1,0 +1,2 @@
+method,parts,evaluated_spots,dominant_matches,dominant_mismatches,dominant_agreement,mean_absolute_error,median_absolute_error,flattened_pearson_correlation
+cell2location,0,324,310,14,0.9567901234567902,0.014799152657304289,0.006946875981306,0.9932504069596717
